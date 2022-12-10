@@ -14,9 +14,16 @@ else:
 
 while True:
     try:
-        age_of_user = int(input("Введіть свій вік: "))
+        age_of_user = input("Введіть свій вік: ")
+        age_of_user = str(age_of_user)
+        if age_of_user.lower() == "exit":
+            exit(0)
+            quit(0)
+        age_of_user = int(age_of_user)
     except Exception:
         print("Enter valid number, pls!")
+        if str(age_of_user).lower() == "exit":
+            exit(0)
         continue
     if age_of_user < 0:
         print("Are you OK, stupid?")
