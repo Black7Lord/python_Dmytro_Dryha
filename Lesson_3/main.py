@@ -55,6 +55,7 @@ print(text)
 text = text.replace("you", "YOU")
 print(text)
 
+# strip шукає не самий рядок, а кожен символ із введеного аргументу
 s = "    Google   bye         "
 print(s.strip(" "))
 s = "  __ _  Google   bye   ___  "
