@@ -7,28 +7,31 @@ words = large_text.split()
 print(f'Символів: {len(large_text)}; слів: {len(words)}')
 print(type(words))
 
-alteration_signs = '.,1234567890()[]:;"/\'\\`'
+alteration_signs = '.,1234567890()[]:;—"/\'\\`'
 preprocessed_words = list()
 
 # strip шукає не самий рядок, а кожен символ із введеного аргументу
 for word in words:
-    preprocessed_words.append(word.strip(alteration_signs).lower())
+    w = word.strip(alteration_signs).lower()
+    if w:
+        preprocessed_words.append(w)
     # недобре змінювати список під час ітерації: words.append, words[i] = ...
 
 print(preprocessed_words)
 print(preprocessed_words.count('двигуни'))
 
 word_counts = list()
+counted_words_set = set()
 for word in preprocessed_words:
-    x = preprocessed_words.count(word)
-    print(f'Слово {word} зустрічається {x} разів')
-    word_counts.append(x)
+    if word in counted_words_set:
+        continue
+    count = preprocessed_words.count(word)
+    print(f'Слово {word} зустрічається {count} разів')
+    word_tuple = (count, word)
+    word_counts.append(word_tuple)
+    counted_words_set.add(word)
 
 print(max(word_counts))
 print(min(word_counts))
-print(sorted(word_counts, reverse=True))
-print(set(sorted(word_counts, reverse=True)))
-
-x = set([5, 4, 4, 2, 1, 5, 3, 2])
-# x = {5, 4, 3, 2}
-print(x)
+print(sorted(word_counts, reverse=True)[:5])
+print(sorted(word_counts, reverse=True)[-5:][::-1])
