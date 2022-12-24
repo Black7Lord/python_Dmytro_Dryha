@@ -1,0 +1,1 @@
+from .input_numbers import get_int_from_user

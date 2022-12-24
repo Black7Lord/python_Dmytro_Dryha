@@ -16,3 +16,9 @@ say_hi('Bobo')
 say_hi(12345)
 say_hi(False)
 print(tmp)
+
+def say_hi_to_many(*name: str):
+    for _name in name:
+        print(f'Hi, {_name}!')
+
+say_hi_to_many('Bob', 'Karl', 'Dimas')
