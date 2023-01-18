@@ -105,7 +105,7 @@ def read_from_file(name_of_file: str) -> dict:
 
     # виведення запрошення ввести назву файлу для зчитування записів
     temp_name = input('Enter filename to read all notes in format <filename.txt>: ').strip()
-    if '.txt' in temp_name:
+    if temp_name.endswith('.txt'):
         name_of_file = temp_name
     else:
         print('Wrong format!')
@@ -134,7 +134,7 @@ def write_to_file(name_of_file: str):
     """
     # виведення запрошення ввести назву файлу для зчитування записів
     temp_name = input('Enter filename to write all notes in format <filename.txt>: ').strip()
-    if '.txt' in temp_name:
+    if temp_name.endswith('.txt'):
         name_of_file = temp_name
     else:
         print('Wrong format!')
