@@ -19,6 +19,7 @@ def get_count() -> int:
         except Exception:
             count = input('How much notes you wanna see? Please, enter INT! ')
     return count_int
+
 def print_earliest(ndict: dict):
     """
     Функція отримує в якості параметру словник записів користувача, викликає
@@ -172,5 +173,6 @@ if __name__ == '__main__':
         elif command == 'shortest' or command == '5':
             print_shortest(notes)
         elif command == 'exit' or command == 'save' or command == 'save & exit' or command == '6':
-
-                exit(0)
+            # виклик функції запису до файлу
+            write_to_file(filename)
+            exit(0)
