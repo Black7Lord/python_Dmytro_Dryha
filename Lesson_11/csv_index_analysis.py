@@ -1,4 +1,5 @@
 import json
+import csv
 from uuid import uuid4
 
 def create_index(employee_uids: dict, index_key: str) -> dict:
@@ -38,8 +39,16 @@ def positions_in_department_view(
     return positions_in_department
 
 if __name__ == '__main__':
-    data = json.load(open('hr_department.json', 'r'))
-    print(type(data), data)
+
+    data = {
+        'data': list()
+    }
+    with open('hr_department.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+
+        for row in reader['data']:
+            writer.writerow(row)
+            ###############################################
 
     employee_ids_index = dict()
     for employee in data['data']:

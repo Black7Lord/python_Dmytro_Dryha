@@ -89,7 +89,7 @@ if __name__ == '__main__':
             "surname": choice(list(last_names)),
             "position": choice(position),
             "department": choice(department),
-            "salary": randint(SALARY_LOWER_BOUND / 100, SALARY_UPPER_BOUND / 100) * 100
+            "salary": randint(SALARY_LOWER_BOUND // 100, SALARY_UPPER_BOUND // 100) * 100
         }
         json_object.append(d)
     json.dump({"data":json_object}, open('hr_department.json', 'w'), indent=4)
