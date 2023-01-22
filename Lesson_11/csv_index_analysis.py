@@ -12,8 +12,8 @@ def create_index(employee_uids: dict, index_key: str) -> dict:
     return new_index
 
 def positions_in_department_view(
-        _department_name: str, _department_index: dict,
-        employee_uids: dict, debug: bool=False
+        employee_uids: dict, _department_index: dict,
+        _department_name: str, debug: bool = False
 ) -> dict:
     """
     Функція рахує кількість посад у вказаному відділі.
@@ -24,18 +24,17 @@ def positions_in_department_view(
     :param debug: прапорець для перевірки коректної роботи
     :return: словник: ключ - посади у відділі, значення - їхня кількість
     """
-    print(f'У відділі {_department_name} працюють:')
+    #print(f'У відділі {_department_name} працюють:')
     positions_in_department = dict()
-    for uid in _department_index[_department_name]:
+    for _uid in _department_index[_department_name]:
         if debug:
-            print(employee_uids[uid])
-        employee_position = employee_uids[uid]['position']
+            print(employee_uids[_uid])
+        employee_position = employee_uids[_uid]['position']
         if employee_position in positions_in_department:
             positions_in_department[employee_position] += 1
         else:
             positions_in_department[employee_position] = 1
-
-    print(positions_in_department)
+    # print(positions_in_department)
     return positions_in_department
 
 if __name__ == '__main__':
@@ -45,10 +44,9 @@ if __name__ == '__main__':
     }
     with open('hr_department.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
-
-        for row in reader['data']:
-            writer.writerow(row)
-            ###############################################
+        for row in reader:
+            data['data'].append(row)
+    print('1. ', type(data), data)
 
     employee_ids_index = dict()
     for employee in data['data']:
@@ -66,13 +64,13 @@ if __name__ == '__main__':
 
     position_index = create_index(employee_ids_index, 'position')
     for key, value in position_index.items():
-        print(f'На посаді {key} працює {len(value)} людей.')
+        print(f'2. На посаді {key} працює {len(value)} людей.')
 
     department_index = create_index(employee_ids_index, 'department')
     for key, value in department_index.items():
-        print(f'У відділі {key} працює {len(value)} людей.')
+        print(f'3. У відділі {key} працює {len(value)} людей.')
 
-    print('У відділі HR працюють:')
+    print('4. У відділі HR працюють:')
     for uid in department_index['HR']:
         print(employee_ids_index[uid])
 
