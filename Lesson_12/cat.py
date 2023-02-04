@@ -77,4 +77,3 @@ class Cat:
         for i in range(count):
             print(f'{self.name} мявкає')
     #pass
-
