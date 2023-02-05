@@ -1,4 +1,5 @@
 from animal import Animal
+from datetime import datetime
 
 # спадкоємець отримує всі атрибути з батьківського класу
 # батьківський клас не знає нічого про спадкоємця
@@ -6,12 +7,18 @@ class Cow(Animal):
     # потрібно обов'язково викликати конструктор батьківського класу!
     # переписуємо конструктор - не рекомендується. Треба забезпечити зворотню сумісність
     # всі властивості необхідно задати в конструкторі
-    def __init__(self, name: str, age: int):
-        super().__init__(name, {'трава', 'сіно'}, age)
+    def __init__(self, name: str, age: int, last_vet_check: datetime = None):
+        super().__init__(f'корова {name}', {'трава', 'сіно'}, age)
         #self.allowed_meal = {'трава', 'сіно'}
         #self.name = name
         #self.age = age
         self.say_word = 'Мууу' # рекомендований варіант
+        if isinstance(last_vet_check, datetime):
+            month_difference = (datetime.now() - last_vet_check).days // 30
+            if month_difference >= 6:
+                self.vet_check = False
+            else:
+                self.vet_check = True
 
     # перевизначення методу
     """def say(self):
