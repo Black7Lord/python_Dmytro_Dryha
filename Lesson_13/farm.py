@@ -3,12 +3,14 @@ import random
 from cat import Cat
 from hen import Hen
 from cow import Cow
+from dog import Dog
 
 if __name__ == '__main__':
     animals = [
         Cat('Димок', 3, 'дворняжка'),
         Hen(1),
-        Cow('Бурьонка', 4)
+        Cow('Бурьонка', 4),
+        Dog('Шарік', 4, 'вівчарка')
     ]
 
     food_variants = [
