@@ -1,9 +1,9 @@
 import random
 
-from cat import Cat
-from hen import Hen
-from cow import Cow
-from dog import Dog
+from Lesson_13.animals.cat import Cat
+from Lesson_13.animals.hen import Hen
+from Lesson_13.animals.cow import Cow
+from Lesson_13.animals.dog import Dog
 from datetime import datetime, timedelta
 
 if __name__ == '__main__':
