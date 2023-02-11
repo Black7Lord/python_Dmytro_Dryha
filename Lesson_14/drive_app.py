@@ -1,3 +1,5 @@
+import time
+
 from vehicles import Car
 from vehicles import Motorcycle
 from vehicles import Bicycle
@@ -38,3 +40,4 @@ if __name__ == '__main__':
             print(f'Їдемо на {v} дистанцію {distance}')
         else:
             my_car_service.maintenance(v)
+        time.sleep(1)

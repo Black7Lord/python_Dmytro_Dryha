@@ -30,6 +30,20 @@ class Vehicle:
 
         self.construct()
 
+    # getters and setters - методи для отримання та встановлення захищеного поля
+    @property # getter
+    def construction_needed(self):
+        return self._construction_needed
+
+    @property # getter
+    def maintenance_needed(self):
+        return self._maintenance_needed
+    @maintenance_needed.setter # setter
+    def maintenance_needed(self, new_value: bool):
+        self._maintenance_needed = new_value
+        if not new_value:
+            self._km_passed_after_mt = 0.0
+
     # службовий метод. Викликається неявно
     def __str__(self):
         return f"транспортний засіб {self.model} кольору {self.color}"
