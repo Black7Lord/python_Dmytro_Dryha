@@ -1,19 +1,19 @@
-import csv
-import json
 
+import json
+import csv
+import os
 
 class FileProcessor:
-    def __init__(self, filename: str):
-        self.data = {
-            'data': list()
-        }
+    """
+    Class to represent a file processor.
+    """
 
-        if filename.endswith('.csv'):
-            with open(filename, newline='') as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    self.data['data'].append(row)
+    def __init__(self, filename):
+        self.filename = filename
+        self.data_entries = []
 
-        elif filename.endswith('.json'):
-            self.data['data'].append(json.load(open(filename, 'r')))
-
+    def read_file(self):
+        """
+        Reads data from file and appends it to data_entries list.
+        """
+        raise NotImplementedError
