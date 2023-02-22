@@ -1,19 +1,22 @@
-import json
-import csv
 import os
+from classes import JSONFileProcessor
+from classes import CSVFileProcessor
+
 
 class DirectoryProcessor:
-    """
-    Class to represent a directory processor.
-    """
 
     def __init__(self, directory):
+        """
+        Клас для роботи з директоріями
+        :param directory: назва папки
+        """
         self.directory = directory
+        # список процесорів для подальшої роботи з ними
         self.file_processors = []
 
     def read_directory(self):
         """
-        Reads all files in a directory and initializes file_processors list.
+        Метод, що читає всі файли з директорії та запускає процесори для зчитування даних
         """
         for filename in os.listdir(self.directory):
             if filename.endswith(".json"):
@@ -27,9 +30,10 @@ class DirectoryProcessor:
 
     def get_data(self):
         """
-        Returns a list of all data_entries from all file_processors.
+        Метод для отримання списку всіх записів
+        :return: entries: list - список записів
         """
-        data_entries = []
+        entries = []
         for fp in self.file_processors:
-            data_entries += fp.data_entries
-        return data_entries
+            entries += fp.data_entries
+        return entries
